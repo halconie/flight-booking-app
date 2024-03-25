@@ -1,22 +1,25 @@
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+import 'package:flutter/widgets.dart';
 
-class AppLayout{
-  static getSize(BuildContext context){
+class AppLayout {
+  static getSize(BuildContext context) {
     return MediaQuery.of(context).size;
   }
-  static getScreenHeight(){
-    return Get.height;
+
+  static getScreenHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
   }
-  static getScreenWidth(){
-    return Get.width;
+
+  static getScreenWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
   }
-  static getHeight(double pixel){
-    double x = getScreenHeight()/pixel;
-    return getScreenHeight()/x;
+
+  static getHeight(double pixel, BuildContext context) {
+    double x = getScreenHeight(context) / pixel;
+    return getScreenHeight(context) / x;
   }
-  static getWidth(double pixel){
-    double x = getScreenWidth()/pixel;
-    return getScreenWidth()/x;
+
+  static getWidth(double pixel, BuildContext context) {
+    double x = getScreenWidth(context) / pixel;
+    return getScreenWidth(context) / x;
   }
 }
