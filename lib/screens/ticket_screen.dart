@@ -125,8 +125,8 @@ class TicketScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(AppLayout.getHeight(15, context)),
                   child: BarcodeWidget(
-                    barcode: Barcode.code128(),
-                    data: 'https://github.com/matinovovo',
+                    barcode: Barcode.qrCode(),
+                    data: 'https://www.skyscanner.co.in/',
                     drawText: false,
                     color: Styles.textColor,
                     width: double.infinity,
@@ -143,6 +143,36 @@ class TicketScreen extends StatelessWidget {
             ),
 
           ],
+        ),
+        Positioned(
+          left: AppLayout.getHeight(22, context),
+          top: AppLayout.getHeight(295, context),
+          child: Container(
+            padding: EdgeInsets.all(AppLayout.getHeight(3, context),),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Styles.textColor, width: 2),
+            ),
+            child: CircleAvatar(
+              maxRadius: 4,
+              backgroundColor: Styles.textColor,
+            )
+          ),
+        ),
+        Positioned(
+          right: AppLayout.getHeight(22, context),
+          top: AppLayout.getHeight(295, context),
+          child: Container(
+              padding: EdgeInsets.all(AppLayout.getHeight(3, context),),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Styles.textColor, width: 2),
+              ),
+              child: CircleAvatar(
+                maxRadius: 4,
+                backgroundColor: Styles.textColor,
+              )
+          ),
         )
       ])
     );
