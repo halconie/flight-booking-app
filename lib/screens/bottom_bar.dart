@@ -1,10 +1,12 @@
-import 'package:booktickets/screens/account_screen.dart';
-import 'package:booktickets/screens/location_screen.dart';
-import 'package:booktickets/screens/search_screen.dart';
-import 'package:booktickets/screens/ticket_screen.dart';
-import 'package:fluentui_icons/fluentui_icons.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:sensors/sensors.dart';
 import 'home_screen.dart';
+import 'search_screen.dart';
+import 'ticket_screen.dart';
+import 'location_screen.dart';
+import 'account_screen.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -15,6 +17,11 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
+  double shakeThresholdGravity = 10;
+  double acceleration = 0.00;
+  double currentAcceleration = 0.00;
+  double lastAcceleration = 0.00;
+
   static final List<Widget>_widgetOptions = <Widget>[
     const HomeScreen(),
     const SearchScreen(),
@@ -22,20 +29,46 @@ class _BottomBarState extends State<BottomBar> {
     const LocationServices(),
     const AccountScreen(),
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    // print('Tapped index is $_selectedIndex');
-    // print("Tapped index is " + _selectedIndex.toString());
   }
+
+  @override
+  void initState() {
+    super.initState();
+    accelerometerEvents.listen((AccelerometerEvent event) {
+      updateAcceleration(event);
+    });
+  }
+
+  void updateAcceleration(AccelerometerEvent event) {
+    double x = event.x;
+    double y = event.y;
+    double z = event.z;
+
+    lastAcceleration = currentAcceleration;
+    currentAcceleration = sqrt(x * x + y * y + z * z);
+    double delta = currentAcceleration - lastAcceleration;
+    acceleration = acceleration * 0.9 + delta; // perform low-cut filter
+
+    if (acceleration > shakeThresholdGravity) {
+      // device is being shaken
+      print("Device is being shaken");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Device is being shaken'),
+          duration: Duration(seconds: 1),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("My tickets"),
-      //   backgroundColor: Colors.blue,
-      // ),
       body: Center(
           child: _widgetOptions[_selectedIndex]
       ),

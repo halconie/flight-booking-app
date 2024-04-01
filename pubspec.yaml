@@ -43,7 +43,9 @@ dependencies:
   firebase_ui_auth: ^1.13.1
   permission_handler: ^11.3.0
   geolocator: ^11.0.0
+  sensors: ^2.0.3
 
+  barcode_widget: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -54,7 +56,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
-  barcode_widget: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

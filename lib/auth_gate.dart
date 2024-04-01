@@ -4,8 +4,15 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 
 
-class AuthGate extends StatelessWidget {
+class AuthGate extends StatefulWidget {
   const AuthGate({super.key});
+
+  @override
+  _AuthGateState createState() => _AuthGateState();
+}
+
+class _AuthGateState extends State<AuthGate> {
+  bool _isAccepted = false; // Add this line
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +42,28 @@ class AuthGate extends StatelessWidget {
               );
             },
             footerBuilder: (context, action) {
-              return const Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text(
-                  'By signing in, you agree to our terms and conditions.',
-                  style: TextStyle(color: Colors.grey),
-                ),
+              return Column(
+                children: [
+                  CheckboxListTile(
+                    title: const Text(
+                      'Accept Terms and Conditions',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    value: _isAccepted,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isAccepted = value!;
+                      });
+                    },
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: Text(
+                      'By signing in, you agree to our terms and conditions.',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ],
               );
             },
             sideBuilder: (context, shrinkOffset) {

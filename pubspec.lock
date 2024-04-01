@@ -34,7 +34,7 @@ packages:
     source: hosted
     version: "2.2.6"
   barcode_widget:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: barcode_widget
       sha256: "6f2c5b08659b1a5f4d88d183e6007133ea2f96e50e7b8bb628f03266c3931427"
@@ -501,6 +501,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  sensors:
+    dependency: "direct main"
+    description:
+      name: sensors
+      sha256: "69c10fe94a63dd7c6f5e6557366e5329a713bf6c45d885d95a56642dd8722e35"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   sky_engine:
     dependency: transitive
     description: flutter

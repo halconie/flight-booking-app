@@ -142,7 +142,7 @@ class AccountScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xFF264CD2), width: 18),
+                    border: Border.all(color: const Color(0xFF264CD2), width: 18),
                   )
               )),
               Container(
@@ -152,10 +152,10 @@ class AccountScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CircleAvatar(
-                      child: Icon(FluentSystemIcons.ic_fluent_lightbulb_filament_filled,
-                      color: Styles.primaryColor, size: 27),
                       maxRadius: 25,
                       backgroundColor: Colors.white,
+                      child: Icon(FluentSystemIcons.ic_fluent_lightbulb_filament_filled,
+                      color: Styles.primaryColor, size: 27),
                     ),
                     Gap(AppLayout.getHeight(12, context)),
                     Column(
@@ -163,7 +163,7 @@ class AccountScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "You\'ve got a new award",
+                          "You've got a new award",
                           style: Styles.headLineStyle2.copyWith(
                               fontWeight: FontWeight.bold, color: Colors.white,
                           ),
@@ -237,7 +237,7 @@ class AccountScreen extends StatelessWidget {
                   children: [
                     AppColumnLayout(firstText: "24", secondText: "Miles",
                         alignment: CrossAxisAlignment.start, isColor: false),
-                    AppColumnLayout(firstText: "McGinn\'s", secondText: "Received from",
+                    AppColumnLayout(firstText: "McGinn's", secondText: "Received from",
                         alignment: CrossAxisAlignment.end, isColor: false),
                   ],
                 ),
