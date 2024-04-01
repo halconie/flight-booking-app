@@ -10,8 +10,31 @@ import '../widgets/column_layout.dart';
 import '../widgets/layout_builder_widget.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
-class TicketScreen extends StatelessWidget {
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+
+class TicketScreen extends StatefulWidget {
   const TicketScreen({super.key});
+
+  @override
+  _TicketScreenState createState() => _TicketScreenState();
+}
+
+class _TicketScreenState extends State<TicketScreen> {
+  File? _pickedImage;
+
+  Future<void> pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _pickedImage = File(pickedFile.path);
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No image selected.'))
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +164,20 @@ class TicketScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: AppLayout.getHeight(15, context)),
               child: TicketView(ticket: ticketList[0],),
             ),
-
+            ElevatedButton(
+              onPressed: () {
+                pickImage(ImageSource.camera);
+              },
+              child: const Text('Pick Image from Camera'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                pickImage(ImageSource.gallery);
+              },
+              child: const Text('Pick Image from Gallery'),
+            ),
+            if (_pickedImage != null)
+              Image.file(_pickedImage!),
           ],
         ),
         Positioned(

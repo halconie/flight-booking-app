@@ -46,6 +46,7 @@ dependencies:
   sensors: ^2.0.3
 
   barcode_widget: any
+  image_picker: ^1.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
