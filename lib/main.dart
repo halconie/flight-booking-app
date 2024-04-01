@@ -1,11 +1,20 @@
-import 'package:booktickets/screens/bottom_bar.dart';
-import 'package:booktickets/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+import 'app.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
+/*
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -36,7 +45,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const BottomBar(),
+      home: const MyApp(),
     );
   }
 }
@@ -128,3 +137,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
