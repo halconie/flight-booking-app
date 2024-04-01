@@ -1,4 +1,5 @@
 import 'package:booktickets/screens/account_screen.dart';
+import 'package:booktickets/screens/location_screen.dart';
 import 'package:booktickets/screens/search_screen.dart';
 import 'package:booktickets/screens/ticket_screen.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -18,7 +19,8 @@ class _BottomBarState extends State<BottomBar> {
     const HomeScreen(),
     const SearchScreen(),
     const TicketScreen(),
-    const AccountScreen()
+    const LocationServices(),
+    const AccountScreen(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -56,6 +58,9 @@ class _BottomBarState extends State<BottomBar> {
           BottomNavigationBarItem(icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
               activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
               label: "Ticket"),
+          BottomNavigationBarItem(icon: Icon(FluentSystemIcons.ic_fluent_location_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_location_filled),
+              label: "Location"),
           BottomNavigationBarItem(icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
               activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
               label: "Profile")

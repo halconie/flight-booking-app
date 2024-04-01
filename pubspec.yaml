@@ -41,6 +41,8 @@ dependencies:
   firebase_core: ^2.27.2
   firebase_auth: ^4.18.0
   firebase_ui_auth: ^1.13.1
+  permission_handler: ^11.3.0
+  geolocator: ^11.0.0
 
 dev_dependencies:
   flutter_test:
