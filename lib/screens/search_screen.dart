@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import '../utils/app_layout.dart';
 import '../utils/app_styles.dart';
 import '../widgets/double_text_widget.dart';
+import 'flight_info_screen.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -26,6 +27,17 @@ class SearchScreen extends StatelessWidget {
           const AppIconText(icon: Icons.flight_takeoff_rounded, text: "Departure"),
           Gap(AppLayout.getHeight(25, context)),
           const AppIconText(icon: Icons.flight_land_rounded, text: "Arrival"),
+          Gap(AppLayout.getHeight(25, context)),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FlightInfoScreen()),
+              );
+            },
+            child: const AppIconText(icon: Icons.airplanemode_active, text: "Flights Info"),
+          ),
+          Gap(AppLayout.getHeight(25, context)),
           Gap(AppLayout.getHeight(25, context)),
           Container(
             padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(18, context), vertical: AppLayout.getWidth(15, context)),

@@ -47,6 +47,8 @@ dependencies:
 
   barcode_widget: any
   image_picker: ^1.0.7
+  provider: ^6.1.2
+  http: ^1.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
